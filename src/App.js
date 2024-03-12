@@ -1,13 +1,17 @@
+import { useState } from 'react';
 import Banner from './componentes/Banner/Banner';
-import CampoTexto from './componentes/CampoTexto/CampoTexto';
+import Formulario from './componentes/Formulario';
 
 function App() {
+
+  const[colaboradores, setColaboradores] = useState([])
+  const aoNovoColaboradorAdiconado = (colaborador) => {
+    setColaboradores([...colaboradores, colaborador])
+  }
   return (
     <div className="App">
       <Banner/>
-      <CampoTexto label="Nome" placeholder="Digite o seu nome"/>
-      <CampoTexto label="Cargo" placeholder="Digite seu cargo"/>
-      <CampoTexto label="Imagem" placeholder="Digite o endereço da imagem"/>
+      <Formulario aoColaboradorCadastrado={colaborador =>aoNovoColaboradorAdiconado(colaborador)}/>
     </div>
   );
 }
